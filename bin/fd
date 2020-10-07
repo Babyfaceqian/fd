@@ -1,0 +1,16 @@
+#! /usr/bin/env node
+const debug = require('debug')('fd')
+const program = require('commander')
+const { argv } = require('yargs')
+const checkNodeVersion = require('../lib/check-node-version')
+const checkFdVersion = require('../lib/check-fd-version')
+
+program.on('command:*', function (operands) {
+  // 未知命令处理
+  console.log('operands11')
+})
+program.command('init').action((args) => {
+  checkNodeVersion()
+  checkFdVersion() 
+})
+program.parse(process.argv)
